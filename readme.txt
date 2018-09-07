@@ -17,3 +17,5 @@ montage -background '#FFFFFF' -geometry +4+4 Barbara_tmp.png  logo.jpg  Barbara_
 #put text pus logo (xyz_tmp_2.png) onto the center of background.png, output to xyz.png
 convert background.png -gravity Center Barbara_tmp_2.png -composite Barbara.png
 
+#TODO: T1 The logo has to go upwards relative to the text.
+#TODO: T2 Scaling for different text lengths, from 9 to 25 characters.
