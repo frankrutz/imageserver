@@ -9,10 +9,10 @@ apt-get install imagemagick imagemagick-doc
 #background for the card - total canvas
 convert -size 1280x800 canvas:white background.png 
 #background for the name
-convert -size 900x250 canvas:white backwhite.png 
+convert -size 900x222 canvas:white backwhite.png 
 
 #print text onto backwhite.png, output to xyz_tmp.png
-convert backwhite.png -gravity East  -font Times-Bold -pointsize 144 -draw "text 0,0 'Barbaras Life'" Barbara_tmp.png
+convert backwhite.png -gravity Southeast  -font Times-Bold -pointsize 144 -draw "text 0,0 'Barbaras Life'" Barbara_tmp.png
 
 #put logo.jpg right to xyz_png, output to xyz_tmp-2.png
 montage -background '#FFFFFF' -geometry +4+4 Barbara_tmp.png  logo.jpg  Barbara_tmp_2.png
