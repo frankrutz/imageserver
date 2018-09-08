@@ -7,8 +7,10 @@ apt-get install imagemagick imagemagick-doc
 
 
 Bash Script to produce the png:
-printimage.sh
+printimage.sh firstname printname scalefactor
 
+Golang to call printimage:
+callmagic.go  <firstname>
 
 
 
