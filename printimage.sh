@@ -9,8 +9,9 @@ export OUTPNG=Testing.png
 
 #background for the card - total canvas
 convert -size 1280x800 canvas:white background.png 
+
 #background for the name
-convert -size $BACKFORMAT canvas:red backwhite.png 
+convert -size $BACKFORMAT canvas:white backwhite.png 
 
 #print text onto backwhite.png, output to TMP1PNG
 convert backwhite.png -gravity Southeast  -font Times-Bold -pointsize 144 -draw "text 0,0 '$PRINTTEXT Life'"  $TMP1PNG
@@ -18,12 +19,12 @@ convert backwhite.png -gravity Southeast  -font Times-Bold -pointsize 144 -draw 
 #put logo.jpg right to TMP1PNG, output to TMP2PNG
 montage -background '#FFFFFF' -geometry +4+4 $TMP1PNG  logo.jpg  $TMP2PNG
 
-#Rescale width to adjust for different name length
+#resize the image, needed for differing lengths of the names
 convert $TMP2PNG -resize 800 $TMP2PNG
 
 #put text plus logo () onto the center of background.png, output to OUTPNG
 convert background.png -gravity Center $TMP2PNG -composite $OUTPNG
 
-#cleanup
+#clean up
 rm $TMP1PNG
 rm $TMP2PNG
