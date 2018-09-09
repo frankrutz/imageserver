@@ -5,7 +5,7 @@ export PRINTTEXT=$2
 export BACKFORMAT=$3"x200"
 export TMP1PNG=$PRINTNAME"_tmp.png"
 export TMP2PNG=$PRINTNAME"_tmp_2.png"
-export OUTPNG=Testing.png
+export OUTPNG=$PRINTNAME".png"
 
 #background for the card - total canvas
 convert -size 1280x800 canvas:white background.png 
@@ -24,6 +24,8 @@ convert $TMP2PNG -resize 800 $TMP2PNG
 
 #put text plus logo () onto the center of background.png, output to OUTPNG
 convert background.png -gravity Center $TMP2PNG -composite $OUTPNG
+
+mv $OUTPNG ./tmp
 
 #clean up
 rm $TMP1PNG
