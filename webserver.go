@@ -4,7 +4,7 @@ import (
     "net/http"
 )
 func main() {
-    http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./"))))
+    http.Handle("/tmp/", http.StripPrefix("/", http.FileServer(http.Dir("./tmp/"))))
     if err := http.ListenAndServe(":80", nil); err != nil {
         log.Fatal("ListenAndServe: ", err)
     }
