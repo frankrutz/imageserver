@@ -8,9 +8,6 @@ import (
     "strconv"
     "unicode/utf8"
 )
-
-
-
 func makeimage(vorname string) int {
     var rc int = 1
     fmt.Println("Hallo "+vorname);
@@ -21,16 +18,13 @@ func makeimage(vorname string) int {
     outtextlength := utf8.RuneCountInString(outtext)
     imglength = 74 * outtextlength
     cmnd := exec.Command("/root/imageserver/printimage.sh",inputname, printtext, strconv.Itoa(imglength))
-    //cmnd.Run() // and wait
     cmnd.Start()
     log.Println("log")
     return rc
 }
-
-
 func hello(w http.ResponseWriter, r *http.Request) {
     if r.URL.Path != "/" {
-        http.Error(w, "404 not found.", http.StatusNotFound)
+        http.Error(w, "hello: 404 not found.", http.StatusNotFound)
         return
     }
  
@@ -38,24 +32,21 @@ func hello(w http.ResponseWriter, r *http.Request) {
     case "GET":     
          http.ServeFile(w, r, "form.html")
     case "POST":
-        // Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
         if err := r.ParseForm(); err != nil {
             fmt.Fprintf(w, "ParseForm() err: %v", err)
             return
         }
-        fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
         name := r.FormValue("name")
         makeimage(name);
-        fmt.Fprintf(w, "Vorname = %s\n", name)
+        fmt.Fprintf(w,"<!DOCTYPE html><HTML>")
+        fmt.Fprintf(w,"<CENTER><a href=\"http://35.242.198.150/tmp/%s.png\">click to download %s.png</n></CENTER></HTML>",name,name)
     default:
         fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
     }
 }
-
-
 func main() {
     http.HandleFunc("/", hello)
-    //http.HandleFunc("/tmp/",serveimage)
+    http.Handle("/tmp/", http.StripPrefix("/tmp/", http.FileServer(http.Dir("./tmp/"))))
     fmt.Printf("Starting server for testing HTTP POST...\n")
     if err := http.ListenAndServe(":80", nil); err != nil {
         log.Fatal(err)
