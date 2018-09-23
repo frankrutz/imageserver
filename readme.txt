@@ -10,6 +10,7 @@ Bash Script to produce the png:
 printimage.sh firstname printname scalefactor
 
 To run the webserver:
+mkdir tmp
 nohup swiss.go &
 
 
