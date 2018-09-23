@@ -3,6 +3,7 @@ Golang webserver for the marketing department
 
 Tested and used on Google Cloud
 
+Recommended Google cloud VM: g1-small (1 vCPU, 1.7 GB memory)
 
 ## Installation on Ubuntu 16.04
 
