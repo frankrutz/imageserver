@@ -15,6 +15,9 @@ apt-get install imagemagick imagemagick-doc
 git clone https://github.com/frankrutz/imageserver
 
 ## To run the webserver:
+
+cd imageserver
+
 mkdir tmp
 
 go build swiss.go
