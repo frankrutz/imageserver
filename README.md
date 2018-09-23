@@ -3,6 +3,9 @@ Golang webserver for the marketing department
 
 
 ## Installation on Ubuntu 16.04
+
+webserver must allow http / https traffic
+
 apt-get update
 
 apt-get install golang
