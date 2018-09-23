@@ -5,6 +5,10 @@ Tested and used on Google Cloud
 
 Recommended Google cloud VM: g1-small (1 vCPU, 1.7 GB memory)
 
+Live until October 5th 2018 at
+
+http://35.242.198.150/
+
 ## Installation on Ubuntu 16.04
 
 webserver must allow http traffic
