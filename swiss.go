@@ -34,7 +34,7 @@ func makeimage(vorname string) int {
     printtext := inputname
     outtext   := printtext+ "Life"
     outtextlength := utf8.RuneCountInString(outtext)
-    imglength = 74 * outtextlength
+    imglength = 77 * outtextlength
     cmnd := exec.Command("./printimage.sh",inputname, printtext, strconv.Itoa(imglength))
     cmnd.Start()
     log.Println("log")
@@ -56,6 +56,9 @@ func imageMakerHandler(w http.ResponseWriter, r *http.Request) {
         }
         name := strings.TrimSpace(r.FormValue("name"))
         name=toLetters(name)
+        if len(name) == 0 {
+          name="Noname"
+        }
         if name[len(name)-1:] == "s" || name[len(name)-1:] == "x" {
            name=name+""
         } else {
@@ -73,6 +76,7 @@ func imageMakerHandler(w http.ResponseWriter, r *http.Request) {
         fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
     }
 }
+
 func main() {
     http.HandleFunc("/", imageMakerHandler)
     http.Handle("/tmp/", http.StripPrefix("/tmp/", http.FileServer(http.Dir("./tmp/"))))
