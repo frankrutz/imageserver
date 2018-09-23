@@ -1,6 +1,8 @@
 # imageserver
 Golang webserver for the marketing department
 
+Tested and used on Google Cloud
+
 
 ## Installation on Ubuntu 16.04
 
