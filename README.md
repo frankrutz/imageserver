@@ -18,6 +18,8 @@ git clone https://github.com/frankrutz/imageserver
 
 cd imageserver
 
+chmod u+x printimage.sh
+
 mkdir tmp
 
 go build swiss.go
