@@ -13,6 +13,8 @@ git clone https://github.com/frankrutz/imageserver
 
 ## To run the webserver:
 mkdir tmp
+
 go build swiss.go
+
 nohup ./swiss &
 
