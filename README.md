@@ -6,7 +6,7 @@ Tested and used on Google Cloud
 
 ## Installation on Ubuntu 16.04
 
-webserver must allow http / https traffic
+webserver must allow http traffic
 
 apt-get update
 
@@ -27,4 +27,12 @@ mkdir tmp
 go build swiss.go
 
 nohup ./swiss &
+
+## Todo's
+
+Genetiv-s not correctly implemented
+
+Names with spaces are not handled
+
+Get the official SwissLife font
 
